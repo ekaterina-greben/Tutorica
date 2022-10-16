@@ -1,0 +1,48 @@
+{
+	"info": {
+		"_postman_id": "d0f11125-5a80-4b26-a021-22acd06b91ce",
+		"name": "API Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23891750"
+	},
+	"item": [
+		{
+			"name": "GET-Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{HOST}}:{{PORT}}/gettest",
+					"protocol": "http",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"gettest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post-test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://{{HOST}}:{{PORT}}/posttest",
+					"protocol": "http",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"posttest"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
