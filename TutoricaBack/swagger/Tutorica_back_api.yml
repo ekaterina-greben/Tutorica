@@ -28,7 +28,7 @@ paths:
       - advertisement
       operationId: PostAdvertisement
       summary: Post advertisement
-      description: Post advertisement
+      description: Post an advertisement
       requestBody:
         description: Optional description in *Markdown*
         required: true
@@ -45,7 +45,7 @@ paths:
       - getcourse
       operationId: GetCourse
       summary: Get course
-      description: Get Course
+      description: Get the exchange rate for the current day
       requestBody:
         description: Optional description in *Markdown*
         required: true
