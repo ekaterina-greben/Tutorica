@@ -1,0 +1,17 @@
+{
+    "request": {
+      "method": "GET",
+      "url": "/api/v1/getcourse"
+    },
+  
+    "response": {
+      "status": 200,
+      "jsonBody": {
+        "date": "2021-02-27",
+        "currency": "USD",
+        "course": "25.12"
+      }
+           
+    }
+         
+}

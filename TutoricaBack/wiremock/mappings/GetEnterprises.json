@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/v1/enterprises"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "enterprises.json",
+    "headers": {
+      "Access-Control-Allow-Origin": "*"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/advertisement"
+    },
+  
+    "response": {
+      "status": 201
+    }
+  }
