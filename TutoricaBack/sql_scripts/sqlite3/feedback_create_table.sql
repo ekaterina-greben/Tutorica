@@ -1,7 +1,5 @@
-USE Tutorica;
-
 create table feedback (
-	Id INT IDENTITY(1,1), PRIMARY KEY,
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	email TEXT,
 	msgtext TEXT
 );

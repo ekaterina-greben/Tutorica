@@ -9,14 +9,23 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.4" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.116" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.116" />
   </ItemGroup>
 
-<ItemGroup>
-<None Update="database_configuration.json">
-<CopyToOutputDirectory>preferences</CopyToOutputDirectory>
-</None>
-</ItemGroup>
+  <ItemGroup>
+    <None Update="database_configuration.json">
+      <CopyToOutputDirectory>preferences</CopyToOutputDirectory>
+    </None>
+    <None Update="database_sqlite3_configuration.json">
+      <CopyToOutputDirectory>preferences</CopyToOutputDirectory>
+    </None>
+    <None Update="feedback.sqlite3">
+      <CopyToOutputDirectory>content</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>

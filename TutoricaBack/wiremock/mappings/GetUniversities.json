@@ -1,11 +1,11 @@
 {
   "request": {
     "method": "GET",
-    "url": "/api/v1/enterprises"
+    "url": "/university"
   },
   "response": {
     "status": 200,
-    "bodyFileName": "enterprises.json",
+    "bodyFileName": "universities.json",
     "headers": {
       "Access-Control-Allow-Origin": "*"
     }

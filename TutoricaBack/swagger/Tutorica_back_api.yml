@@ -3,16 +3,15 @@ info:
   title: Tutorica API
   version: '1.0'
 servers:
-  - url: http://192.168.56.101:7020/api/v1
-  - url: http://192.168.56.101:7020/api/v2
+  - url: http://192.168.56.101:5045
 paths:
-  /enterprises:
+  /university:
     get:
       tags:
-          - enterprises
-      operationId: GetAllEnterprises
-      summary: Get all enterprises
-      description: Get all enterprises
+          - university
+      operationId: GetAllUniversities
+      summary: Get all universities
+      description: Get all universities
       responses:
         '200':
           description: OK
@@ -21,21 +20,20 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Enterprises'
-  /advertisement:
+                  $ref: '#/components/schemas/Universities'
     post:
       tags:
-      - advertisement
-      operationId: PostAdvertisement
-      summary: Post advertisement
-      description: Post an advertisement
+      - university
+      operationId: PostUniversity
+      summary: Post university
+      description: Post a university
       requestBody:
         description: Optional description in *Markdown*
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Advertisement'
+              $ref: '#/components/schemas/Universities'
       responses:
         '201':
           description: Created
@@ -88,7 +86,7 @@ paths:
       
 components:
   schemas:
-    Enterprises:
+    Universities:
       type: object
       properties:
         id:
@@ -112,30 +110,7 @@ components:
         course:
           type: numeric
         a_t_UAH:
-          type: numeric     
-    Advertisement:
-      type: object
-      properties:
-        firstName: 
-          type: string
-        lastName: 
-          type: string
-        enterpriseName:
-          type: string
-        phoneNumber:
-          type: string
-        email:
-          type: string
-        entDescription:
-          type: string
-        age:
-          type: integer
-        a_t_USD:
-          type: numeric  
-        course:
-          type: numeric
-        a_t_UAH:
-          type: numeric     
+          type: numeric          
     Course:
       type: object
       properties:
