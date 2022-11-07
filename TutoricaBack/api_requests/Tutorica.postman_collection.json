@@ -7,34 +7,70 @@
 	},
 	"item": [
 		{
-			"name": "GET Enterprises",
+			"name": "GET Universities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", () => {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content test\", function () {\r",
+							"    var lnft = pm.variables.get('lastNameForTest');\r",
+							"    pm.expect(pm.response.text()).to.include(lnft);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{HOST}}:{{PORT}}/api/v1/enterprises",
+					"raw": "http://{{HOST}}:{{PORT}}/university",
 					"protocol": "http",
 					"host": [
 						"{{HOST}}"
 					],
 					"port": "{{PORT}}",
 					"path": [
-						"api",
-						"v1",
-						"enterprises"
+						"university"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "POST Advertisement",
+			"name": "POST University",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t   \"firstName\": \"Nariko\",\r\n       \"lastName\": \"Drewery\",\r\n       \"enterpriseName\": \"University of the Faroe Islands\",\r\n       \"phoneNumber\": \"794-940-2089\",\r\n       \"email\": \"ndrewery0@pbs.org\",\r\n       \"entDescription\": \"In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl.\",\r\n       \"age\": \"27\",\r\n       \"a_t_USD\": \"12.00\",\r\n\t   \"course\": \"5.29\",\r\n\t   \"a_t_UAH\": \"63.4800\"\r\n}\r\n",
+					"raw": "{\r\n\t   \"firstName\": \"Naomi\",\r\n       \"lastName\": \"Baileys\",\r\n       \"name\": \"University of the Ululaka Islands\",\r\n       \"phoneNumber\": \"701-568-3597\",\r\n       \"email\": \"baileys@test.org\",\r\n       \"description\": \"In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl.\",\r\n       \"years\": \"9\",\r\n       \"investment_usd\": \"12.00\",\r\n\t   \"course\": \"5.29\",\r\n\t   \"investment_uah\": \"63.4800\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -42,16 +78,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://{{HOST}}:{{PORT}}/api/v1/advertisement",
+					"raw": "http://{{HOST}}:{{PORT}}/university",
 					"protocol": "http",
 					"host": [
 						"{{HOST}}"
 					],
 					"port": "{{PORT}}",
 					"path": [
-						"api",
-						"v1",
-						"advertisement"
+						"university"
 					]
 				}
 			},
@@ -59,12 +93,53 @@
 		},
 		{
 			"name": "POST Feedback",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Access-Control-Allow-Origin is present\", function () {\r",
+							"    pm.response.to.have.header(\"Access-Control-Allow-Origin\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function randomString(length=1) {\r",
+							"    \tlet randomString = \"\";\r",
+							"    \tfor (let i = 0; i < length; i++){\r",
+							"        \trandomString += pm.variables.replaceIn(\"{{$randomAlphaNumeric}}\");\r",
+							"    \t}\r",
+							"    \treturn randomString;\r",
+							"\t}\r",
+							"\r",
+							"\tSTRING_LEN = 200\r",
+							"\tpm.variables.set('randomString', randomString(STRING_LEN));\r",
+							"\r",
+							"\tconst uuid = require('uuid')\r",
+							"\tlet email=uuid()+'@domain.com'\r",
+							"\tpm.environment.set('randomEmail',email)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n   \"email\": \"bhandrock2@furl.net\",\r\n   \"msgText\": \"Morbi a ipsum. Integer a nibh. In quis justo.\"\r\n}\r\n\r\n",
+					"raw": "{\r\n   \"email\": \"{{randomEmail}}\",\r\n   \"msgText\": \"{{randomString}}\"\r\n}\r\n\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -72,15 +147,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://{{HOST}}:{{PORT}}/api/v1/feedback",
+					"raw": "http://{{HOST}}:{{PORT}}/feedback",
 					"protocol": "http",
 					"host": [
 						"{{HOST}}"
 					],
 					"port": "{{PORT}}",
 					"path": [
-						"api",
-						"v1",
 						"feedback"
 					]
 				}
@@ -89,19 +162,39 @@
 		},
 		{
 			"name": "GET Course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{HOST}}:{{PORT}}/api/v1/getcourse",
+					"raw": "http://{{HOST}}:{{PORT}}/getcourse",
 					"protocol": "http",
 					"host": [
 						"{{HOST}}"
 					],
 					"port": "{{PORT}}",
 					"path": [
-						"api",
-						"v1",
 						"getcourse"
 					]
 				}
