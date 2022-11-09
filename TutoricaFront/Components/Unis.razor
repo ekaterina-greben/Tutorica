@@ -1,3 +1,7 @@
+@using Newtonsoft.Json;
+@inject IConfiguration configuration
+@inject HttpClient http
+
 <table class="table table-hover">
   <thead>
     <tr>
@@ -8,26 +12,42 @@
       <th scope="col">Email</th>
       <th scope="col">Описание направлений обучения</th>
       <th scope="col">Инвестиции в USD (в год)</th>
+      <th scope="col">Курс</th>
       <th scope="col">Инвестиции в UAH (в год)</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>mdo</td>
-      <td>mdo</td>
-      <td>mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>fat</td>
-    </tr>
+    @if (items is null) {
+      <p>Loading ...</p>
+    }
+    else {
+      @foreach (var x in items) {
+      <tr>
+        <th scope="row">@x.id</th>
+        <td>@(x.firstName + " " + x.lastName)</td>
+        <td>@x.name</td>
+        <td>@x.phoneNumber</td>
+        <td>@x.email</td>
+        <td>@x.description</td>
+        <td>@x.years</td>
+        <td>@x.investmentUSD</td>
+        <td>@x.course</td>
+        <td>@x.investmentUAH</td>
+      </tr>
+      }
+    }
+
   </tbody>
 </table>
+
+@code {
+  
+  public List<Item>? items;
+
+  protected override async Task OnInitializedAsync() {
+
+    String jsonString = await http.GetStringAsync(configuration["backServer"] + "/university");  
+
+    this.items = JsonConvert.DeserializeObject<List<Item>>(jsonString);
+  }
+}

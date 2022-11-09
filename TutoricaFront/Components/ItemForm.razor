@@ -1,48 +1,74 @@
 <form>
   <div class="form-group">
     <label for="fnln">Имя и фамилия</label>
-    <input type="text" class="form-control" id="fnln" aria-describedby="fnln" placeholder="Имя и фамилия" required>
+    <input type="text" class="form-control" id="fnln" aria-describedby="fnln" placeholder="Имя и фамилия" required
+    @bind="fnln">
   </div>
 
   <div class="form-group">
-    <label for="uni">Наименование ВУЗа</label>
-    <input type="text" class="form-control" id="uni" aria-describedby="uni" placeholder="Минский государственный лингвистический университет" required>
+    <label for="uniName">Наименование ВУЗа</label>
+    <input type="text" class="form-control" id="uniName" aria-describedby="uniName" placeholder="Минский государственный лингвистический университет" required
+    @bind="item.name">
   </div>
 
    <div class="form-group">
     <label for="phoneNumber">Номер телефона приемной</label>
-    <input type="text" class="form-control" id="phoneNumber" aria-describedby="phoneNumber" placeholder="Номер телефона приемной" required>
+    <input type="text" class="form-control" id="phoneNumber" aria-describedby="phoneNumber" placeholder="222-333-4444" required
+    @bind="item.phoneNumber">
   </div>
+
 
   <div class="form-group">
     <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email" required>
+    <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email" required
+  @bind="item.email">
   </div>
 
   <div class="form-group">
-    <label for="program">Описание направлений обучения</label>
-    <input type="text" class="form-control" id="program" aria-describedby="program" placeholder="Описание направлений обучения" required>
+    <label for="description">Описание направлений обучения</label>
+    <textarea class="form-control" id="description" rows="5" required
+    @bind="item.description">
+    </textarea>
   </div>
 
   <div class="form-group">
-    <label for="akkYears">Лет с момента аккредитации</label>
-    <input type="text" class="form-control" id="akkYears" aria-describedby="akkYears" placeholder="20" required>
+    <label for="years">Лет с момента аккредитации</label>
+    <input type="text" class="form-control" id="years" aria-describedby="years" placeholder="20" required
+    @bind="item.years">
   </div>
 
   <div class="form-group">
-    <label for="amountUSD">Объем инвестиций USD</label>
-    <input type="text" class="form-control" id="amountUSD" aria-describedby="amountUSD" placeholder="1000" required>
+    <label for="investmentUSD">Объем инвестиций USD</label>
+    <input type="text" class="form-control" id="investmentUSD" aria-describedby="investmentUSD" placeholder="1000" 
+    @bind="item.investmentUSD">
   </div>
 
    <div class="form-group">
     <label for="course">Курс</label>
-    <input type="text" class="form-control" id="course" aria-describedby="course" placeholder="23,50" readonly>
+    <input type="text" class="form-control" id="course" aria-describedby="course" placeholder="23,50" readonly
+    @bind="item.course">
   </div>
 
   <div class="form-group">
-    <label for="amountUAH">Оборот в UAH</label>
-    <input type="text" class="form-control" id="amountUAH" aria-describedby="amountUAH" placeholder="23500" readonly>
+    <label for="investmentUAH">Оборот в UAH</label>
+    <input type="text" class="form-control" id="investmentUAH" aria-describedby="investmentUAH" placeholder="23500" readonly
+    value="@calculateInvestmentUAH()">
   </div>
 
   <button type="submit" class="btn btn-primary sendbtn">Submit</button>
 </form>
+
+@code {
+  Item? item;
+  string? fnln;
+ 
+  protected override void OnInitialized() {
+    this.item = new Item();
+    this.item.course = 35.02F;
+  }
+
+  public float calculateInvestmentUAH() {
+    this.item.investmentUAH = this.item.investmentUSD * this.item.course;
+    return this.item.investmentUAH;
+  }
+}
