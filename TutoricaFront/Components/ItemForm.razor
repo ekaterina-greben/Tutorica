@@ -1,3 +1,8 @@
+@using Newtonsoft.Json;
+@inject IConfiguration configuration
+@inject HttpClient http
+@inject NavigationManager NM
+
 <form>
   <div class="form-group">
     <label for="fnln">Имя и фамилия</label>
@@ -55,20 +60,53 @@
     value="@calculateInvestmentUAH()">
   </div>
 
-  <button type="submit" class="btn btn-primary sendbtn">Submit</button>
+  <button type="submit" class="btn btn-primary sendbtn" @onclick="submitForm" @onclick:preventDefault>Submit</button>
 </form>
+
+<div class="alert alert-danger" role="alert" style="margin-top: 20px; @displayStyle">
+  Запрещено размещать объявления о ВУЗах, прошедших аккредитацию более 15 лет назад
+</div>
 
 @code {
   Item? item;
   string? fnln;
+  Course? course;
+  string? displayStyle;
  
   protected override void OnInitialized() {
     this.item = new Item();
-    this.item.course = 35.02F;
+
+    displayStyle = "display: none";
+  }
+
+  protected override async Task OnInitializedAsync () {
+    String jsonString = await http.GetStringAsync(configuration["backServer"] + "/getcourse");
+    this.course = JsonConvert.DeserializeObject<Course>(jsonString);
+      
+      this.item.course = this.course.course;
+      calculateInvestmentUAH();
   }
 
   public float calculateInvestmentUAH() {
     this.item.investmentUAH = this.item.investmentUSD * this.item.course;
     return this.item.investmentUAH;
   }
+
+  protected async Task submitForm() {
+
+    if (this.item.years < 15) {
+
+    string[] clientFNLN = this.fnln.Split(" ");
+
+    this.item.firstName = clientFNLN[0];
+    this.item.lastName = clientFNLN[1];
+
+    await http.PostAsJsonAsync(configuration["backServer"] + "/university", this.item);
+
+    NM.NavigateTo("/unislist");
+  }
+  else {
+    displayStyle = "display: block";
+  }
+ }
 }

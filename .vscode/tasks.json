@@ -1,0 +1,67 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/TutoricaFront/TutoricaFront.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/TutoricaFront/TutoricaFront.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/TutoricaFront/TutoricaFront.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Run Front",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/TutoricaFront/TutoricaFront.csproj",
+                "--urls",
+                "http://0.0.0.0:5044"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Run Back",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/TutoricaBack/TutoricaBack.csproj",
+                "--urls",
+                "http://0.0.0.0:5045"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+    ]
+}

@@ -1,0 +1,373 @@
+{
+  "id": "6c912768-7d0b-4f22-b8fc-4b91ee6f53cc",
+  "version": "2.0",
+  "name": "TutoricaE2ETests",
+  "url": "http://192.168.56.101:5044",
+  "tests": [{
+    "id": "eba98f9e-12bf-4f68-bb8a-e8a93a8b1356",
+    "name": "Posting feedback",
+    "commands": [{
+      "id": "a5d0940c-651a-44ac-87cc-db56d5f04f83",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b16c99cf-9b05-4228-9953-0a92c9cbd5eb",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "64a6500d-3c71-422f-83c2-9849d55d33c8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=О компании",
+      "targets": [
+        ["linkText=О компании", "linkText"],
+        ["css=.nav-item:nth-child(4) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'О компании')]", "xpath:link"],
+        ["xpath=//div[@id='app']/div/header/div/div[3]/nav/div/div/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/about')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'О компании')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e8136fea-80c6-4747-87f1-7ee4413300db",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "simon_petersonr@localnet.ua"
+    }, {
+      "id": "03a7c7e0-ac52-48fc-b5cd-94e999db38ad",
+      "comment": "",
+      "command": "type",
+      "target": "id=textArea",
+      "targets": [
+        ["id=textArea", "id"],
+        ["css=#textArea", "css:finder"],
+        ["xpath=//textarea[@id='textArea']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
+    }, {
+      "id": "1926113c-fc1a-44f6-b75c-931e5518cc2b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "42758c17-4b01-4201-8ee0-2e70fdb0a98a",
+      "comment": "",
+      "command": "click",
+      "target": "css=html",
+      "targets": [
+        ["css=html", "css:finder"],
+        ["xpath=//html", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "aa5223b4-0cd2-4667-88ca-3e63cdb40560",
+    "name": "Posting a university advertisement",
+    "commands": [{
+      "id": "50d9d1a9-b463-448d-a400-888f0a9528f0",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dce9a5b7-359c-45d2-88c2-f5d4f0c201f7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2d762971-a6a9-44d5-9346-27707a3f9eac",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Добавить УЗ",
+      "targets": [
+        ["linkText=Добавить УЗ", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Добавить УЗ')]", "xpath:link"],
+        ["xpath=//div[@id='app']/div/header/div/div[3]/nav/div/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/adduni')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Добавить УЗ')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "add28029-94a3-4802-b170-d5ba23dbd90d",
+      "comment": "",
+      "command": "type",
+      "target": "id=fnln",
+      "targets": [
+        ["id=fnln", "id"],
+        ["css=#fnln", "css:finder"],
+        ["xpath=//input[@id='fnln']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Joshua Montesque"
+    }, {
+      "id": "401f2a30-a7eb-4550-a336-d082a0bfa96f",
+      "comment": "",
+      "command": "type",
+      "target": "id=uniName",
+      "targets": [
+        ["id=uniName", "id"],
+        ["css=#uniName", "css:finder"],
+        ["xpath=//input[@id='uniName']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "niversity of Hannover"
+    }, {
+      "id": "f92aecd7-e66f-4776-8b69-4be798fa7b49",
+      "comment": "",
+      "command": "type",
+      "target": "id=phoneNumber",
+      "targets": [
+        ["id=phoneNumber", "id"],
+        ["css=#phoneNumber", "css:finder"],
+        ["xpath=//input[@id='phoneNumber']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "762-847-0139"
+    }, {
+      "id": "b3a0d03a-efe4-4809-bb9e-769f79f69102",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "humboldt@localnet.ua"
+    }, {
+      "id": "d1b59d98-f8f2-4037-96cf-7726f2b0d446",
+      "comment": "",
+      "command": "type",
+      "target": "id=description",
+      "targets": [
+        ["id=description", "id"],
+        ["css=#description", "css:finder"],
+        ["xpath=//textarea[@id='description']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/div[5]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Dignissim lacus convallis massa mauris enim ad mattis magnis senectus montes, mollis taciti phasellus accumsan bibendum semper blandit suspendisse faucibus nibh est."
+    }, {
+      "id": "f74cda4b-fcee-4040-b79e-93517695c1e9",
+      "comment": "",
+      "command": "type",
+      "target": "id=years",
+      "targets": [
+        ["id=years", "id"],
+        ["css=#years", "css:finder"],
+        ["xpath=//input[@id='years']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/div[6]/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": "9"
+    }, {
+      "id": "b1eb5652-8a9b-4bc4-a09c-4b9da80d12d0",
+      "comment": "",
+      "command": "type",
+      "target": "id=investmentUSD",
+      "targets": [
+        ["id=investmentUSD", "id"],
+        ["css=#investmentUSD", "css:finder"],
+        ["xpath=//input[@id='investmentUSD']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/div[7]/input", "xpath:idRelative"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": "2000"
+    }, {
+      "id": "900444b5-6391-439c-b0a4-d4c396fd004c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "8d3cf5ef-1953-4e63-8c1a-bdc71c60bbb4",
+    "name": "Posting a university years>15",
+    "commands": [{
+      "id": "775d1d20-546b-446f-b8f3-c739a98f15be",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "60ad48bf-6094-426e-b133-935e1752f942",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d9401d01-dece-46e9-81d5-2b076502b245",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Добавить УЗ",
+      "targets": [
+        ["linkText=Добавить УЗ", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Добавить УЗ')]", "xpath:link"],
+        ["xpath=//div[@id='app']/div/header/div/div[3]/nav/div/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/adduni')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Добавить УЗ')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a9fcbd9a-f12e-4c40-8e6b-faef9d25a721",
+      "comment": "",
+      "command": "type",
+      "target": "id=fnln",
+      "targets": [
+        ["id=fnln", "id"],
+        ["css=#fnln", "css:finder"],
+        ["xpath=//input[@id='fnln']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Joshua Montesque"
+    }, {
+      "id": "5927e247-0d03-4655-a1d7-7b6529678ca0",
+      "comment": "",
+      "command": "type",
+      "target": "id=uniName",
+      "targets": [
+        ["id=uniName", "id"],
+        ["css=#uniName", "css:finder"],
+        ["xpath=//input[@id='uniName']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "niversity of Hannover"
+    }, {
+      "id": "f0df0e56-c42b-4f52-8da6-240c558be351",
+      "comment": "",
+      "command": "type",
+      "target": "id=phoneNumber",
+      "targets": [
+        ["id=phoneNumber", "id"],
+        ["css=#phoneNumber", "css:finder"],
+        ["xpath=//input[@id='phoneNumber']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "762-847-0139"
+    }, {
+      "id": "034a955a-cc29-4a0b-b40b-a4b2413c71d4",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "humboldt@localnet.ua"
+    }, {
+      "id": "97572dc3-f5ea-463c-ba1d-f80ec393c517",
+      "comment": "",
+      "command": "type",
+      "target": "id=description",
+      "targets": [
+        ["id=description", "id"],
+        ["css=#description", "css:finder"],
+        ["xpath=//textarea[@id='description']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/div[5]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Dignissim lacus convallis massa mauris enim ad mattis magnis senectus montes, mollis taciti phasellus accumsan bibendum semper blandit suspendisse faucibus nibh est."
+    }, {
+      "id": "74b4396d-6ec4-4011-aef2-e70a49e85bf3",
+      "comment": "",
+      "command": "type",
+      "target": "id=years",
+      "targets": [
+        ["id=years", "id"],
+        ["css=#years", "css:finder"],
+        ["xpath=//input[@id='years']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/div[6]/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": "16"
+    }, {
+      "id": "a194746c-03a3-4364-9b32-0682e6109ac8",
+      "comment": "",
+      "command": "type",
+      "target": "id=investmentUSD",
+      "targets": [
+        ["id=investmentUSD", "id"],
+        ["css=#investmentUSD", "css:finder"],
+        ["xpath=//input[@id='investmentUSD']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/div[7]/input", "xpath:idRelative"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": "2000"
+    }, {
+      "id": "30c31fee-7652-4b9b-b6b1-8e290f56e188",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/main/div/div[2]/div/form/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "1c42eeff-5b2a-4c6d-b322-6a7b3d628a99",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["eba98f9e-12bf-4f68-bb8a-e8a93a8b1356"]
+  }],
+  "urls": ["http://192.168.56.101:5044/"],
+  "plugins": []
+}

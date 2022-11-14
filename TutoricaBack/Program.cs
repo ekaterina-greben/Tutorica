@@ -3,22 +3,23 @@ using System.Data.SqlClient;
 using System.Collections.Specialized;
 using System.Data.SQLite;
 using Newtonsoft.Json.Linq;
+using RestSharp;
 
 
 string formatLogString(string logevent) {
     return "[" + DateTime.Now + "] " + logevent;
 }
 
-Console.WriteLine("API Server Version 0.0.4");
+Console.WriteLine("API Server Version 0.0.5");
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+// builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -44,14 +45,18 @@ var configSQLite3 = new ConfigurationBuilder()
             .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
             .AddJsonFile("database_sqlite3_configuration.json").Build();
 
-	string connectionStringSQLite3 = "Data Source=" + 
+string connectionStringSQLite3 = "Data Source=" + 
             configSQLite3.GetValue<string>("dbname") + ";Version=3;New=True;Compress=True;";
 	
-    app.Logger.LogDebug(formatLogString(connectionStringSQLite3));
+app.Logger.LogDebug(formatLogString(connectionStringSQLite3));
 	
-    SQLiteConnection sqlite3Connection;
-	sqlite3Connection = new SQLiteConnection(connectionStringSQLite3);
-	sqlite3Connection.Open();
+SQLiteConnection sqlite3Connection;
+sqlite3Connection = new SQLiteConnection(connectionStringSQLite3);
+sqlite3Connection.Open();
+
+var configExternalServices = new ConfigurationBuilder()
+            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+            .AddJsonFile("external_services.json").Build();
 
 app.MapGet("/university", (HttpRequest request, HttpResponse response) =>
 {
@@ -77,9 +82,9 @@ app.MapGet("/university", (HttpRequest request, HttpResponse response) =>
         list.Add("email", rdr.GetString(5));
         list.Add("description", rdr.GetString(6));
         list.Add("years", rdr.GetInt32(7).ToString());
-        list.Add("investment_usd", rdr.GetDecimal(8).ToString());
+        list.Add("investmentUSD", rdr.GetDecimal(8).ToString());
         list.Add("course", rdr.GetDecimal(9).ToString());
-        list.Add("investment_uah", rdr.GetDecimal(10).ToString());
+        list.Add("investmentUAH", rdr.GetDecimal(10).ToString());
 
         answer.Add(list);
 
@@ -92,14 +97,18 @@ app.MapGet("/university", (HttpRequest request, HttpResponse response) =>
     return answer;
 });
 
-app.MapGet("/getcourse", (HttpRequest request, HttpResponse response) =>
+app.MapGet("/getcourse", async (HttpRequest request, HttpResponse response) =>
 {
-    app.Logger.LogWarning(formatLogString("GET /getcourse " + "from " + request.Host));
+    app.Logger.LogInformation(formatLogString("GET /getcourse " + "from " + request.Host));
+    
+    var client = new RestClient(configExternalServices["coursesServiceURL"]);
+    var courseRequest = new RestRequest(configExternalServices["path"], Method.Get);
+    var queryResult = (await client.ExecuteAsync(courseRequest)).Content;
+    
     response.Headers.AccessControlAllowOrigin = "*";
     response.ContentType = "application/json";
     response.StatusCode = 200;
-
-    return "The method is under construction!";
+    return queryResult;
 });
 
 
@@ -124,7 +133,7 @@ app.MapPost("/university", async (HttpRequest request, HttpResponse response) =>
                       bodyJson["firstName"], bodyJson["lastName"],
                       bodyJson["name"], bodyJson["phoneNumber"], bodyJson["email"], 
                       bodyJson["description"], bodyJson["years"], 
-                      bodyJson["investment_usd"], bodyJson["course"], bodyJson["investment_uah"]);
+                      bodyJson["investmentUSD"], bodyJson["course"], bodyJson["investmentUAH"]);
 
     app.Logger.LogDebug(formatLogString(sql));
 
@@ -166,6 +175,30 @@ app.MapPost("/feedback", async (HttpRequest request, HttpResponse response) =>
 
     response.Headers.AccessControlAllowOrigin = "*";
     response.StatusCode = 201;
+
+    return "OK";
+});
+
+app.MapMethods("/feedback", new[] { "OPTIONS" }, (HttpRequest request, HttpResponse response) => {
+
+    app.Logger.LogDebug(formatLogString("OPTIONS /feedback " + "from " + request.Host));
+
+    response.Headers.AccessControlAllowOrigin = "*";
+    response.Headers.AccessControlAllowMethods = "*";
+    response.Headers.AccessControlAllowHeaders = "*";
+    response.StatusCode = 200;
+
+    return "OK";
+});
+
+app.MapMethods("/university", new[] { "OPTIONS" }, (HttpRequest request, HttpResponse response) => {
+
+    app.Logger.LogDebug(formatLogString("OPTIONS /university " + "from " + request.Host));
+
+    response.Headers.AccessControlAllowOrigin = "*";
+    response.Headers.AccessControlAllowMethods = "*";
+    response.Headers.AccessControlAllowHeaders = "*";
+    response.StatusCode = 200;
 
     return "OK";
 });

@@ -14,7 +14,7 @@ namespace TutoricaFront.Models
         public string? phoneNumber {get; set;} 
         public string? email {get; set;} 
         public string? description {get; set;} 
-        public string? years {get; set;} 
+        public int years {get; set;} 
         public float investmentUSD {get; set;} 
         public float course {get; set;} 
         public float investmentUAH {get; set;} 
