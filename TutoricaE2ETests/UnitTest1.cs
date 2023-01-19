@@ -14,7 +14,7 @@ using CodeJam;
 [AllureSuite("Smoke Tests")]
 public class Tests
 {
-    IWebDriver? driver;
+    EdgeDriver? driver;
     Actions actions;
         
     [SetUp]
@@ -58,8 +58,10 @@ public class Tests
         string submitMessageText = textElement.Text.ToUpper();
         
         Code.AssertState(string.Equals(submitMessageText, "Спасибо! Сообщение отправлено! Мы обязательно свяжемся с вами!".ToUpper()), "submitMessage is not valid!");
-                
+
     }
+                
+
     
     [Test]
     public void PostUniversity() 
