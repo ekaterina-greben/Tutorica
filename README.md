@@ -75,7 +75,7 @@ For running Selenium tests
 
 Set up edgedriver on your system (or driver for any of your favorite browser) in ".driver" directory Modify UnitTest1.cs for your Front-server address (and your driver if you've changed) Run GUI/Selenium tests via command: dotnet test
 
-![1674040443062](image/README/1674040443062.png)
+![1674556378929](image/README/1674556378929.png)
 
 ![1670190488447](image/README/1670190488447.png)
 
