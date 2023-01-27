@@ -8,6 +8,8 @@ For raising up the project we need to have:
 
 1. Microsoft SQL Server (2017 or higher)
 2. Docker
+
+   ![1674814634471](image/README/1674814634471.png)
 3. Microsoft DOTNET6
 4. Newman (for API testing)
 
